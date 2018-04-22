@@ -4,9 +4,9 @@
 
 
 template <typename T>
-class CRC16 {
+class CRC {
 public:
-	CRC16();
+	CRC();
 	T transmit(T value);
 	bool receive(T value);
 	void setDivisor(T newDivisor);

@@ -5,7 +5,7 @@
 * Constructor sets the divisor to the binary string 10101
 */
 template <typename T>
-CRC16<T>::CRC16() {
+CRC<T>::CRC() {
     this->divisor = 0b10111011; // 10101 in binary
 }
 
@@ -15,7 +15,7 @@ CRC16<T>::CRC16() {
 * @return unsigned char representing the number of bits in val. 
 */
 template <typename T>
-unsigned char CRC16<T>::numBits(const T &val) {
+unsigned char CRC<T>::numBits(const T &val) {
     if (val == 0)
         return 0;
     return (unsigned char)(log2(val)) + 1;
@@ -30,7 +30,7 @@ unsigned char CRC16<T>::numBits(const T &val) {
  * @return the remainder of the algorithm
  */
 template <typename T>
-T CRC16<T>::transmit(T value) {
+T CRC<T>::transmit(T value) {
     T newDivisor = this->divisor;
     unsigned char divisorBitSize = numBits(this->divisor);
     T crc = value << (divisorBitSize-1); // append zero's
@@ -57,7 +57,7 @@ T CRC16<T>::transmit(T value) {
  *     of this algorithm. 
  */
 template <typename T>
-bool CRC16<T>::receive(T value) {
+bool CRC<T>::receive(T value) {
     T newDivisor = this->divisor;
     unsigned char divisorBitSize = numBits(this->divisor);
     unsigned char numBitsCrc = numBits(value);
@@ -80,7 +80,7 @@ bool CRC16<T>::receive(T value) {
 *     cannot be less than or equal to 0
 */
 template <typename T>
-void CRC16<T>::setDivisor(T newDivisor) {
+void CRC<T>::setDivisor(T newDivisor) {
     if (newDivisor <= 0) {
         return;
     }
