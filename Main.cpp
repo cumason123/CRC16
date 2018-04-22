@@ -4,7 +4,7 @@
 #include <stdlib.h>     /* srand, rand */
 
 bool unittest(CRC<long int> &crc, long int val, unsigned char remainder = 0) {
-	printf("Unit test on value %d\n", val);
+	printf("Unit test on value %ld\n", val);
 	bool success = crc.receive(crc.transmit(val)+remainder);
 	bool unitSuccess = (remainder==0)==success;
 	printf("Success val: %d\n\n", unitSuccess);
@@ -26,7 +26,7 @@ int main() {
 				numIncorrect++;
 			}
 	}
-	printf("Number correct: %d\n", correctness);
-	printf("Number incorrect: %d\n", numIncorrect);
+	printf("Number correct: %f\n", correctness);
+	printf("Number incorrect: %u\n", numIncorrect);
 	printf("Success rate: %f\n", correctness/(iterations));
 }
