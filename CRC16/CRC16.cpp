@@ -6,7 +6,7 @@
 */
 template <typename T>
 CRC16<T>::CRC16() {
-    this->divisor = 0x9; // 10101 in binary
+    this->divisor = 0b10111011; // 10101 in binary
 }
 
 /**
